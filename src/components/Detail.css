@@ -1,0 +1,20 @@
+.detail {
+  padding: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.detail__title {
+  margin: 0 0 16px;
+}
+
+.detail__image {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.detail__synopsis {
+  margin: 0;
+}

@@ -1,0 +1,33 @@
+.food-card {
+  border: 1px solid #e2e6ee;
+  border-radius: 14px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 8px 16px rgba(20, 40, 60, 0.08);
+  display: grid;
+}
+
+.food-card__image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.food-card__content {
+  padding: 14px;
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+}
+
+.food-card__title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.food-card__price {
+  margin: 0;
+  font-weight: 600;
+  color: #0b5bd3;
+}

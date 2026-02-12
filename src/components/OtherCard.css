@@ -1,0 +1,46 @@
+.other-card {
+  border: 1px solid #e2e6ee;
+  border-radius: 16px;
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(20, 40, 60, 0.08);
+  padding: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.other-card__header {
+  display: grid;
+  gap: 8px;
+}
+
+.other-card__tag {
+  align-self: start;
+  display: inline-flex;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #ecf3ff;
+  color: #0b5bd3;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.other-card__title {
+  margin: 0;
+  font-size: 18px;
+}
+
+.other-card__description {
+  margin: 0;
+  color: #334155;
+}
+
+.other-card__detail {
+  margin: 0;
+  font-weight: 600;
+  color: #0b5bd3;
+}
+
+.other-card .button {
+  justify-self: start;
+}
