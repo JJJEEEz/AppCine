@@ -1,22 +1,40 @@
+import { useState, useEffect } from 'react'
 import './Home.css'
 import MovieCard from '../components/MovieCard'
 
-const movies = [
-	{
-		title: 'Avatar: Fuego y Cenizas',
-		image: 'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80',
-	},
-	{
-		title: 'Ayuda',
-		image: 'https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=800&q=80',
-	},
-	{
-		title: 'Arc',
-		image: 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80',
-	},
-]
+function Home({ cambiarVista, verDetalle }) {
+	const [movies, setMovies] = useState([])
+	const [moviesLoading, setMoviesLoading] = useState(true)
+	const [noticias, setNoticias] = useState([])
+	const [cargando, setCargando] = useState(true)
 
-function Home({ cambiarVista }) {
+	useEffect(() => {
+		fetch('/movies.json')
+			.then((response) => response.json())
+			.then((data) => {
+				const homeMovies = data.filter((movie) => movie.section === 'home')
+				setMovies(homeMovies)
+				setMoviesLoading(false)
+			})
+			.catch((error) => {
+				console.error('Error cargando películas:', error)
+				setMoviesLoading(false)
+			})
+	}, [])
+
+	useEffect(() => {
+		fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
+			.then((response) => response.json())
+			.then((data) => {
+				setNoticias(data)
+				setCargando(false)
+			})
+			.catch((error) => {
+				console.error('Error al cargar noticias:', error)
+				setCargando(false)
+			})
+	}, [])
+
 	return (
 		<main className="food">
 			<header className="food__header">
@@ -24,14 +42,40 @@ function Home({ cambiarVista }) {
 				<p className="food__subtitle">Películas destacadas para ti</p>
 			</header>
 			<section className="food__grid">
-				{movies.map((movie) => (
-					<MovieCard
-						key={movie.title}
-						title={movie.title}
-						image={movie.image}
-						onVerDetalle={() => cambiarVista?.('detalle')}
-					/>
-				))}
+				{moviesLoading ? (
+					<p>Cargando películas...</p>
+				) : (
+					movies.map((movie) => (
+						<MovieCard
+							key={movie.id}
+							{...movie}
+							onVerDetalle={() => verDetalle?.(movie)}
+						/>
+					))
+				)}
+			</section>
+
+			{/* Sección de Noticias del Cine */}
+			<section className="news-section">
+				<header className="food__header">
+					<h2 className="food__title">Noticias del Cine</h2>
+					<p className="food__subtitle">Últimas novedades del mundo cinematográfico</p>
+				</header>
+				
+				{cargando ? (
+					<p className="news-section__loading">Cargando noticias...</p>
+				) : (
+					<div className="news-section__grid">
+						{noticias.map((noticia) => (
+							<article key={noticia.id} className="news-card">
+								<div className="news-card__content">
+									<h3 className="news-card__title">{noticia.title}</h3>
+									<p className="news-card__body">{noticia.body}</p>
+								</div>
+							</article>
+						))}
+					</div>
+				)}
 			</section>
 		</main>
 	)

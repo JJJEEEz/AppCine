@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "title": "Avatar: Fuego y Cenizas",
+    "image": "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=800&q=80",
+    "section": "home",
+    "synopsis": "Jake Sully y Neytiri han formado una familia y hacen todo lo posible por permanecer juntos. Sin embargo, deben abandonar su hogar y explorar las diferentes regiones de Pandora cuando una antigua amenaza reaparece."
+  },
+  {
+    "id": 2,
+    "title": "Ayuda",
+    "image": "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=800&q=80",
+    "section": "home",
+    "synopsis": "Una joven escritora decide narrar las historias de las empleadas domésticas afroamericanas en el Mississippi de los años 60, revelando las injusticias que enfrentan diariamente en su trabajo."
+  },
+  {
+    "id": 3,
+    "title": "Arc",
+    "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80",
+    "section": "home",
+    "synopsis": "En un futuro distópico, un grupo de rebeldes lucha contra un sistema opresor que controla cada aspecto de la vida humana a través de la tecnología avanzada. La esperanza reside en descifrar el código Arc."
+  },
+  {
+    "id": 4,
+    "title": "Shingeki No Kyojin: The Final Season",
+    "image": "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=800&q=80",
+    "section": "cartelera",
+    "synopsis": "La batalla final por la libertad de la humanidad llega a su punto culminante. Eren y sus compañeros enfrentan decisiones imposibles mientras el destino del mundo pende de un hilo."
+  },
+  {
+    "id": 5,
+    "title": "Bob Esponja: Al Rescate",
+    "image": "https://images.unsplash.com/photo-1517602302552-471fe67acf66?auto=format&fit=crop&w=800&q=80",
+    "section": "cartelera",
+    "synopsis": "Cuando Gary es secuestrado, Bob Esponja y Patricio se embarcan en una aventura épica a la Ciudad Perdida de Atlantic City para rescatar a su caracol favorito de las garras de un villano misterioso."
+  },
+  {
+    "id": 6,
+    "title": "Vigilante de la Noche",
+    "image": "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&w=800&q=80",
+    "section": "cartelera",
+    "synopsis": "Un detective privado con habilidades sobrenaturales protege la ciudad de las criaturas que acechan en las sombras. Pero cuando un antiguo enemigo regresa, deberá enfrentar su pasado oscuro."
+  },
+  {
+    "id": 7,
+    "title": "Luz de Octubre",
+    "image": "https://images.unsplash.com/photo-1502134249126-9f3755a50d78?auto=format&fit=crop&w=800&q=80",
+    "section": "cartelera",
+    "synopsis": "Un drama conmovedor sobre una familia que se reúne después de años de separación. Los secretos del pasado salen a la luz bajo la cálida luz del otoño, transformando sus vidas para siempre."
+  }
+]

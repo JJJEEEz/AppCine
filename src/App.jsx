@@ -9,15 +9,21 @@ import Otros from './pages/Otros'
 
 function App() {
   const [vistaActual, setVistaActual] = useState('home')
+  const [peliculaSeleccionada, setPeliculaSeleccionada] = useState(null)
+
+  const verDetalle = (pelicula) => {
+    setPeliculaSeleccionada(pelicula)
+    setVistaActual('detalle')
+  }
 
   return (
     <div className="page">
       <Header cambiarVista={setVistaActual} />
-      {vistaActual === 'home' && <Home cambiarVista={setVistaActual} />}
-      {vistaActual === 'cartelera' && <Cartelera cambiarVista={setVistaActual} />}
+      {vistaActual === 'home' && <Home cambiarVista={setVistaActual} verDetalle={verDetalle} />}
+      {vistaActual === 'cartelera' && <Cartelera cambiarVista={setVistaActual} verDetalle={verDetalle} />}
       {vistaActual === 'alimentos' && <Alimentos />}
       {vistaActual === 'otros' && <Otros />}
-      {vistaActual === 'detalle' && <Detail />}
+      {vistaActual === 'detalle' && <Detail peliculaSeleccionada={peliculaSeleccionada} />}
     </div>
   )
 }

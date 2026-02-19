@@ -1,1 +1,58 @@
 /* Home uses .food classes from shared structure */
+
+.news-section {
+  max-width: 1200px;
+  margin: 48px auto 0;
+  padding: 24px 16px 0;
+}
+
+.news-section__loading {
+  text-align: center;
+  color: #556070;
+  font-size: 16px;
+}
+
+.news-section__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.news-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.news-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+}
+
+.news-card__content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.news-card__title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1b2b3a;
+  line-height: 1.4;
+  text-transform: capitalize;
+}
+
+.news-card__body {
+  margin: 0;
+  font-size: 14px;
+  color: #556070;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
