@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import './Home.css'
 import MovieCard from '../components/MovieCard'
+import MovieCarousel from '../components/MovieCarousel'
 
-function Home({ cambiarVista, verDetalle }) {
+function Home() {
 	const [movies, setMovies] = useState([])
 	const [moviesLoading, setMoviesLoading] = useState(true)
 	const [noticias, setNoticias] = useState([])
@@ -41,6 +42,14 @@ function Home({ cambiarVista, verDetalle }) {
 				<h2 className="food__title">Inicio</h2>
 				<p className="food__subtitle">Películas destacadas para ti</p>
 			</header>
+
+			<section className="home-section">
+				<h3 className="home-section__title">Estrenos</h3>
+				<MovieCarousel movies={movies} />
+			</section>
+
+			<section className="home-section">
+				<h3 className="home-section__title">Recomendadas</h3>
 			<section className="food__grid">
 				{moviesLoading ? (
 					<p>Cargando películas...</p>
@@ -49,10 +58,11 @@ function Home({ cambiarVista, verDetalle }) {
 						<MovieCard
 							key={movie.id}
 							{...movie}
-							onVerDetalle={() => verDetalle?.(movie)}
+							detailPath={`/detalle/${movie.id}`}
 						/>
 					))
 				)}
+			</section>
 			</section>
 
 			{/* Sección de Noticias del Cine */}
@@ -77,6 +87,7 @@ function Home({ cambiarVista, verDetalle }) {
 					</div>
 				)}
 			</section>
+
 		</main>
 	)
 }

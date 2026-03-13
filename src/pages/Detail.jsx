@@ -1,14 +1,32 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 import '../components/Detail.css'
 import Button from '../components/Button'
 
 const fallbackImage =
   'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1000&q=80'
 
-function Detail({ peliculaSeleccionada }) {
+function Detail() {
+  const { id } = useParams()
+  const [peliculaSeleccionada, setPeliculaSeleccionada] = useState(null)
+  const [loading, setLoading] = useState(true)
   const [nombreUsuario, setNombreUsuario] = useState('')
   const [cantidadBoletos, setCantidadBoletos] = useState('')
   const [mensajeConfirmacion, setMensajeConfirmacion] = useState('')
+
+  useEffect(() => {
+    fetch('/movies.json')
+      .then((response) => response.json())
+      .then((data) => {
+        const movie = data.find((item) => String(item.id) === String(id))
+        setPeliculaSeleccionada(movie || null)
+        setLoading(false)
+      })
+      .catch((error) => {
+        console.error('Error cargando detalle de película:', error)
+        setLoading(false)
+      })
+  }, [id])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,6 +39,23 @@ function Detail({ peliculaSeleccionada }) {
       setNombreUsuario('')
       setCantidadBoletos('')
     }
+  }
+
+  if (loading) {
+    return (
+      <main className="detail">
+        <p>Cargando detalle...</p>
+      </main>
+    )
+  }
+
+  if (!peliculaSeleccionada) {
+    return (
+      <main className="detail">
+        <h2 className="detail__title">Película no encontrada</h2>
+        <p className="detail__synopsis">Verifica la cartelera e intenta de nuevo.</p>
+      </main>
+    )
   }
 
   return (

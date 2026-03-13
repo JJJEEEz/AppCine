@@ -1,39 +1,24 @@
+import { NavLink } from 'react-router-dom'
 import './Header.css'
 
-function Header({ title = 'CINEpolitoZ', cambiarVista }) {
+function Header({ title = 'CINEpolitoZ' }) {
 	return (
 		<header className="site-header">
 			<div className="site-header__inner">
 				<h1 className="site-header__title">{title}</h1>
 				<nav className="site-header__nav">
-					<button
-						className="site-header__link"
-						type="button"
-						onClick={() => cambiarVista?.('home')}
-					>
+					<NavLink className="site-header__link" to="/" end>
 						Inicio
-					</button>
-					<button
-						className="site-header__link"
-						type="button"
-						onClick={() => cambiarVista?.('cartelera')}
-					>
+					</NavLink>
+					<NavLink className="site-header__link" to="/cartelera">
 						Cartelera
-					</button>
-					<button
-						className="site-header__link"
-						type="button"
-						onClick={() => cambiarVista?.('alimentos')}
-					>
+					</NavLink>
+					<NavLink className="site-header__link" to="/alimentos">
 						Alimentos
-					</button>
-					<button
-						className="site-header__link"
-						type="button"
-						onClick={() => cambiarVista?.('otros')}
-					>
+					</NavLink>
+					<NavLink className="site-header__link" to="/otros">
 						Otros
-					</button>
+					</NavLink>
 				</nav>
 			</div>
 		</header>

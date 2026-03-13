@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './Cartelera.css'
 import MovieCard from '../components/MovieCard'
 
-function Cartelera({ cambiarVista, verDetalle }) {
+function Cartelera() {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -34,7 +34,7 @@ function Cartelera({ cambiarVista, verDetalle }) {
             <MovieCard
               key={movie.id}
               {...movie}
-              onVerDetalle={() => verDetalle?.(movie)}
+              detailPath={`/detalle/${movie.id}`}
             />
           ))
         )}

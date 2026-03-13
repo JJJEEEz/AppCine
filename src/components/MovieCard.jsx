@@ -1,7 +1,7 @@
+import { Link } from 'react-router-dom'
 import './MovieCard.css'
-import Button from './Button'
 
-function MovieCard({ title, image, onVerDetalle }) {
+function MovieCard({ title, image, detailPath }) {
   return (
     <article className="movie-card">
       {image ? (
@@ -9,7 +9,9 @@ function MovieCard({ title, image, onVerDetalle }) {
       ) : null}
       <div className="movie-card__content">
         <h3 className="movie-card__title">{title}</h3>
-        <Button text="Ver detalle" onClick={onVerDetalle} />
+        <Link className="button button--primary" to={detailPath}>
+          Ver detalle
+        </Link>
       </div>
     </article>
   )
