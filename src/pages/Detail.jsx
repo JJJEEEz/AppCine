@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import '../components/Detail.css'
 import Button from '../components/Button'
+import { getMovieById } from '../services/contentApi'
 
 const fallbackImage =
   'https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1000&q=80'
@@ -15,15 +16,14 @@ function Detail() {
   const [mensajeConfirmacion, setMensajeConfirmacion] = useState('')
 
   useEffect(() => {
-    fetch('/movies.json')
-      .then((response) => response.json())
-      .then((data) => {
-        const movie = data.find((item) => String(item.id) === String(id))
-        setPeliculaSeleccionada(movie || null)
-        setLoading(false)
+    getMovieById(id)
+      .then((movie) => {
+        setPeliculaSeleccionada(movie)
       })
       .catch((error) => {
         console.error('Error cargando detalle de película:', error)
+      })
+      .finally(() => {
         setLoading(false)
       })
   }, [id])

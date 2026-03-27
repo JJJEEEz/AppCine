@@ -2,38 +2,50 @@ import { useState, useEffect } from 'react'
 import './Home.css'
 import MovieCard from '../components/MovieCard'
 import MovieCarousel from '../components/MovieCarousel'
+import { getMoviesBySection, getNews } from '../services/contentApi'
 
 function Home() {
 	const [movies, setMovies] = useState([])
 	const [moviesLoading, setMoviesLoading] = useState(true)
 	const [noticias, setNoticias] = useState([])
-	const [cargando, setCargando] = useState(true)
+	const [newsLoading, setNewsLoading] = useState(true)
 
 	useEffect(() => {
-		fetch('/movies.json')
-			.then((response) => response.json())
+		let isMounted = true
+
+		getMoviesBySection('home')
 			.then((data) => {
-				const homeMovies = data.filter((movie) => movie.section === 'home')
-				setMovies(homeMovies)
-				setMoviesLoading(false)
+				if (isMounted) {
+					setMovies(data)
+				}
 			})
 			.catch((error) => {
 				console.error('Error cargando películas:', error)
-				setMoviesLoading(false)
 			})
-	}, [])
+			.finally(() => {
+				if (isMounted) {
+					setMoviesLoading(false)
+				}
+			})
 
-	useEffect(() => {
-		fetch('https://jsonplaceholder.typicode.com/posts?_limit=5')
-			.then((response) => response.json())
+		getNews(5)
 			.then((data) => {
-				setNoticias(data)
-				setCargando(false)
+				if (isMounted) {
+					setNoticias(data)
+				}
 			})
 			.catch((error) => {
 				console.error('Error al cargar noticias:', error)
-				setCargando(false)
 			})
+			.finally(() => {
+				if (isMounted) {
+					setNewsLoading(false)
+				}
+			})
+
+		return () => {
+			isMounted = false
+		}
 	}, [])
 
 	return (
@@ -72,7 +84,7 @@ function Home() {
 					<p className="food__subtitle">Últimas novedades del mundo cinematográfico</p>
 				</header>
 				
-				{cargando ? (
+				{newsLoading ? (
 					<p className="news-section__loading">Cargando noticias...</p>
 				) : (
 					<div className="news-section__grid">

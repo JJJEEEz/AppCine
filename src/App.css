@@ -9,3 +9,10 @@
   margin: 0 auto;
   padding: 28px 20px 60px;
 }
+
+.route-loading {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 28px 20px 60px;
+  color: #3d4b5a;
+}

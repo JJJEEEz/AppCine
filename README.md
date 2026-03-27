@@ -1,16 +1,35 @@
-# React + Vite
+# React Project - Optimizacion de rendimiento
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este proyecto fue optimizado para mejorar tiempos de carga, reducir codigo duplicado y facilitar mantenimiento.
 
-Currently, two official plugins are available:
+## Cambios principales
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Rutas separadas en archivo independiente
+- Se creo `src/routes/AppRoutes.jsx`.
+- `src/App.jsx` ahora solo maneja layout global.
+- Se aplico `React.lazy` + `Suspense` para carga diferida por pagina.
 
-## React Compiler
+2. Capa de servicios para datos
+- Se creo `src/services/contentApi.js` para centralizar consumo de datos.
+- Se agrego cache en memoria para evitar peticiones repetidas de peliculas y alimentos.
+- Paginas actualizadas: Home, Cartelera, Alimentos, Detail.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+3. Mejor estructura y limpieza
+- Se movieron datos estaticos de "Otros" a `src/data/otherItems.js`.
+- Se eliminaron componentes y estilos sin uso.
 
-## Expanding the ESLint configuration
+4. Documentacion para entrega
+- Se agrego `docs/OPTIMIZACION.md` con desarrollo, justificacion tecnica, conclusion y plantilla de portada.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Ejecutar proyecto
+
+```bash
+npm install
+npm run dev
+```
+
+## Build de produccion
+
+```bash
+npm run build
+```

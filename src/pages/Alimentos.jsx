@@ -1,20 +1,21 @@
 import { useState, useEffect } from 'react'
 import './Alimentos.css'
 import FoodCard from '../components/FoodCard'
+import { getFoods } from '../services/contentApi'
 
 function Alimentos() {
   const [alimentos, setAlimentos] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/alimentos.json')
-      .then((response) => response.json())
+    getFoods()
       .then((data) => {
         setAlimentos(data)
-        setLoading(false)
       })
       .catch((error) => {
         console.error('Error cargando alimentos:', error)
+      })
+      .finally(() => {
         setLoading(false)
       })
   }, [])

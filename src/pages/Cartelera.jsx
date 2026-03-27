@@ -1,21 +1,21 @@
 import { useState, useEffect } from 'react'
 import './Cartelera.css'
 import MovieCard from '../components/MovieCard'
+import { getMoviesBySection } from '../services/contentApi'
 
 function Cartelera() {
   const [movies, setMovies] = useState([])
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    fetch('/movies.json')
-      .then((response) => response.json())
+    getMoviesBySection('cartelera')
       .then((data) => {
-        const carteleraMovies = data.filter((movie) => movie.section === 'cartelera')
-        setMovies(carteleraMovies)
-        setLoading(false)
+        setMovies(data)
       })
       .catch((error) => {
         console.error('Error cargando películas:', error)
+      })
+      .finally(() => {
         setLoading(false)
       })
   }, [])
